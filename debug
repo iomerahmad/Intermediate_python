@@ -1,0 +1,29 @@
+class Trade:
+    def __init__(self, symbol: str, entry: float, exit_price: float, risk: float):
+        self.symbol = symbol
+        self.entry = entry
+        self.exit_price = exit_price
+        self.risk = risk
+
+    @property
+    def pnl(self):
+        return self.exit_price - self.entry
+
+    def __eq__(self, other):
+        if not isinstance(other, Trade):
+            return NotImplemented
+        return self.symbol == other.symbol and self.entry == other.entry and self.exit_price == other.exit_price
+
+    def __hash__(self):
+        return hash((self.symbol, self.entry, self.exit_price, self.risk))
+
+
+t1 = Trade("BTCUSDT", 100, 110, 999)
+t2 = Trade("BTCUSDT", 100, 110, 5)
+
+journal = {}
+journal[t1] = "first entry"
+journal[t2] = "should overwrite first entry, same trade"
+
+print(len(journal))
+print(t1 == t2)

@@ -1,0 +1,40 @@
+class Trade:
+    def __init__(self, symbol: str, entry: float, exit: float, risk: float):
+        self.symbol = symbol
+        self.entry = entry
+        self.exit = exit
+        self.risk = risk
+
+    def __str__(self):
+        return f"{self.symbol}: Entry: {self.entry} Exit: {self.exit} Risk amount: {self.risk}"
+
+    def __repr__(self):
+        return f"Trade(symbol={self.symbol!r}, Entry={self.entry}, Exit={self.exit})"
+
+    def __eq__(self, other):
+        if not isinstance(other, Trade):
+            return NotImplemented
+        return self.symbol == other.symbol and self.entry == other.entry and self.exit == other.exit and self.risk == other.risk
+
+    @property
+    def pnl(self):
+        return self.exit - self.entry
+
+class LeveragedTrade(Trade):
+    def __init__(self, symbol, entry, exit, risk, leverage: int):
+        super().__init__(symbol, entry, exit, risk)
+        self.leverage = leverage
+
+    @property
+    def pnl(self):
+        return (self.exit - self.entry) * self.leverage
+
+if __name__ == "__main__":
+    t1 = Trade("BTCUSDT", 100, 110, 5)
+    t2 = Trade("BTCUSDT", 100, 110, 5)
+    lt = LeveragedTrade("BTCUSDT", 100, 110, 5, leverage=10)
+
+    print(str(t1))
+    print(repr(t1))
+    print(t1 == t2)
+    print(lt.pnl)
