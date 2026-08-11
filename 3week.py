@@ -1,4 +1,6 @@
-import json
+trades = []
 
-with open("trade.json", "r") as file:
-    trade = json.load(file)
+trades.append("trade1")
+trades.append("trade2")
+
+print(trades)

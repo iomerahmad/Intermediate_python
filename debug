@@ -15,7 +15,7 @@ class Trade:
         return self.symbol == other.symbol and self.entry == other.entry and self.exit_price == other.exit_price
 
     def __hash__(self):
-        return hash((self.symbol, self.entry, self.exit_price, self.risk))
+        return hash((self.symbol, self.entry, self.exit_price))
 
 
 t1 = Trade("BTCUSDT", 100, 110, 999)
