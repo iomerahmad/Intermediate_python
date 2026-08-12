@@ -1,3 +1,5 @@
 omer is learning python
 omer has completed CS50p
 omer is x years old
+Omer studies
+omer plays

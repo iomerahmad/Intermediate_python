@@ -9,8 +9,8 @@ def main():
         file.write("omer plays\n")
 
     with open("notes.txt", "r") as file:
-        reader = file.readlines()
-        for line in reader:
+        lines = file.readlines()
+        for line in lines:
             print(line.strip())
 
 
