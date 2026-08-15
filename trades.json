@@ -1,1 +1,278 @@
-[{"symbol": "BTCUSDT", "entry": 60000, "exit": 62000, "risk": 100}]
+[
+    {
+        "direction": "short",
+        "entry": null,
+        "entry_time": "8PM Friday",
+        "r_result": -1
+    },
+    {
+        "direction": "Long",
+        "entry": null,
+        "entry_time": "11AM Tuesday",
+        "r_result": -1
+    },
+    {
+        "direction": "Long",
+        "entry": null,
+        "entry_time": "2AM Friday",
+        "r_result": 4
+    },
+    {
+        "direction": "Long",
+        "entry": null,
+        "entry_time": "7PM Wednesday",
+        "r_result": 4
+    },
+    {
+        "direction": "Long",
+        "entry": null,
+        "entry_time": "4:30 Friday",
+        "r_result": 4
+    },
+    {
+        "direction": "Long",
+        "entry": null,
+        "entry_time": "10:30 Tuesday",
+        "r_result": -1
+    },
+    {
+        "direction": "Long",
+        "entry": null,
+        "entry_time": "11PM Jan 6",
+        "r_result": 4
+    },
+    {
+        "direction": "Long",
+        "entry": null,
+        "entry_time": "6:45PM Jan 8",
+        "r_result": 4
+    },
+    {
+        "direction": "Long",
+        "entry": null,
+        "entry_time": "5AM 19 Jan",
+        "r_result": -1
+    },
+    {
+        "direction": "Long",
+        "entry": null,
+        "entry_time": "8PM 20 Jan",
+        "r_result": -1
+    },
+    {
+        "direction": "Long",
+        "entry": null,
+        "entry_time": "8:30 25 Jan",
+        "r_result": -1
+    },
+    {
+        "direction": "Long",
+        "entry": null,
+        "entry_time": "00:00 26 Jan",
+        "r_result": -1
+    },
+    {
+        "direction": "Long",
+        "entry": null,
+        "entry_time": "20:15 28 Jan",
+        "r_result": 4
+    },
+    {
+        "direction": "short",
+        "entry": null,
+        "entry_time": "19:30 30 Jan",
+        "r_result": -1
+    },
+    {
+        "direction": "short",
+        "entry": null,
+        "entry_time": "00:45 31 Jan",
+        "r_result": 4
+    },
+    {
+        "direction": "short",
+        "entry": null,
+        "entry_time": "20:00 2 Feb",
+        "r_result": 4
+    },
+    {
+        "direction": "short",
+        "entry": null,
+        "entry_time": "18:00 6 Feb",
+        "r_result": -1
+    },
+    {
+        "direction": "short",
+        "entry": null,
+        "entry_time": "22:00 6 Feb",
+        "r_result": 4
+    },
+    {
+        "direction": "short",
+        "entry": null,
+        "entry_time": "04:00 7 Feb",
+        "r_result": 4
+    },
+    {
+        "direction": "short",
+        "entry": null,
+        "entry_time": "01:00 25 Feb",
+        "r_result": -1
+    },
+    {
+        "direction": "short",
+        "entry": null,
+        "entry_time": "01:15 25 Feb",
+        "r_result": 4
+    },
+    {
+        "direction": "short",
+        "entry": null,
+        "entry_time": "17:45 28 Feb",
+        "r_result": -1
+    },
+    {
+        "direction": "short",
+        "entry": null,
+        "entry_time": "18:45 28 Feb",
+        "r_result": -1
+    },
+    {
+        "direction": "short",
+        "entry": null,
+        "entry_time": "03:00 9 Mar",
+        "r_result": -1
+    },
+    {
+        "direction": "short",
+        "entry": null,
+        "entry_time": "5:45 9 Mar",
+        "r_result": 4
+    },
+    {
+        "direction": "short",
+        "entry": null,
+        "entry_time": "16:00 23 Mar",
+        "r_result": -1
+    },
+    {
+        "direction": "short",
+        "entry": null,
+        "entry_time": "16:00 23 Mar",
+        "r_result": -1
+    },
+    {
+        "direction": "short",
+        "entry": null,
+        "entry_time": "12:00 1 Apr",
+        "r_result": 4
+    },
+    {
+        "direction": "short",
+        "entry": null,
+        "entry_time": "04:00 8 Apr",
+        "r_result": -1
+    },
+    {
+        "direction": "short",
+        "entry": null,
+        "entry_time": "21:00 17 Apr",
+        "r_result": 4
+    },
+    {
+        "direction": "Long",
+        "entry": null,
+        "entry_time": "20:15 7 May",
+        "r_result": -1
+    },
+    {
+        "direction": "Long",
+        "entry": null,
+        "entry_time": "21:00 13 May",
+        "r_result": 4
+    },
+    {
+        "direction": "Long",
+        "entry": null,
+        "entry_time": "15:15 16 May",
+        "r_result": -1
+    },
+    {
+        "direction": "Long",
+        "entry": null,
+        "entry_time": "04:00 23 May",
+        "r_result": -1
+    },
+    {
+        "direction": "short",
+        "entry": null,
+        "entry_time": "01:30 24 May",
+        "r_result": -1
+    },
+    {
+        "direction": "short",
+        "entry": null,
+        "entry_time": "2:30 24 May",
+        "r_result": -1
+    },
+    {
+        "direction": "short",
+        "entry": null,
+        "entry_time": "20:00 25 May",
+        "r_result": 4
+    },
+    {
+        "direction": "short",
+        "entry": null,
+        "entry_time": "21:00 25 May",
+        "r_result": 4
+    },
+    {
+        "direction": "short",
+        "entry": null,
+        "entry_time": "13:30 7 Jun",
+        "r_result": -1
+    },
+    {
+        "direction": "short",
+        "entry": null,
+        "entry_time": "03:15 8 Jun",
+        "r_result": 4
+    },
+    {
+        "direction": "short",
+        "entry": null,
+        "entry_time": "02:00 14 Jun",
+        "r_result": -1
+    },
+    {
+        "direction": "Long",
+        "entry": null,
+        "entry_time": "20:15 18 Jun",
+        "r_result": -1
+    },
+    {
+        "direction": "Long",
+        "entry": null,
+        "entry_time": "20:00 18 Jun",
+        "r_result": 4
+    },
+    {
+        "direction": "Long",
+        "entry": null,
+        "entry_time": "19:30 24 Jun",
+        "r_result": -1
+    },
+    {
+        "direction": "Long",
+        "entry": null,
+        "entry_time": "22:00 24 Jun",
+        "r_result": -1
+    },
+    {
+        "direction": "Long",
+        "entry": null,
+        "entry_time": "05:45 28 Jul",
+        "r_result": -1
+    }
+]
