@@ -1,25 +1,22 @@
-def get_average_score(scores: dict, student: str) -> None:
-    try:
-        total = scores[student.strip().capitalize()]
-        num_tests = 5
-        average = total / num_tests
-        print(f"{student}'s average: {average}")
-    except KeyError:
-        print(f"No record found for {student}")
-    except ZeroDivisionError:
-        print(f"Can't calculate average for {student}, num_tests is zero")
-    except ValueError:
-        print("Invalid value encountered")
+class BankError(Exception):
+    """Base exception for all banking operations."""
+    pass
 
+class NegativeDepositError(BankError):
+    def __init__(self, amount_deposited: float):
+        self.amount_deposited = amount_deposited
+        message = f"deposit amount: {amount_deposited} must be positive!"
+        super().__init__(message)
 
-def main():
-    scores = {"Ali": 450, "Sara": 0}
+def deposit(balance: float, amount: float) -> float:
+    if amount > 0:
+        return balance + amount
+    else:
+        raise NegativeDepositError(amount)
 
-    get_average_score(scores, "Omer")
-    get_average_score(scores, "Sara")
-    get_average_score(scores, "Ali")
-    get_average_score(scores, "ali")
-
-
-if __name__ == "__main__":
-    main()
+try: 
+    new_balance = deposit(100, 10)
+    print(f"Deposit successful, new balance is: {new_balance}")
+except NegativeDepositError as e:
+    print(f"Failed: {e}")
+    
