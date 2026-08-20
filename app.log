@@ -1,0 +1,30 @@
+2026-08-19 19:33:59,391 - ERROR - Trade added
+Traceback (most recent call last):
+  File "c:\Users\home\Documents\Intermediate_python\3week.py", line 11, in <module>
+    100 / 0
+    ~~~~^~~
+ZeroDivisionError: division by zero
+2026-08-19 19:34:30,350 - ERROR - Trade added
+Traceback (most recent call last):
+  File "C:\Users\home\Documents\Intermediate_python\3week.py", line 11, in <module>
+    100 / 0
+    ~~~~^~~
+ZeroDivisionError: division by zero
+2026-08-19 19:36:45,544 - ERROR - Error in calculating risk!
+Traceback (most recent call last):
+  File "c:\Users\home\Documents\Intermediate_python\3week.py", line 11, in <module>
+    100 / 0
+    ~~~~^~~
+ZeroDivisionError: division by zero
+2026-08-19 19:47:24,453 - ERROR - Error in calculating risk!
+Traceback (most recent call last):
+  File "c:\Users\home\Documents\Intermediate_python\3week.py", line 11, in <module>
+    100 / 0
+    ~~~~^~~
+ZeroDivisionError: division by zero
+2026-08-19 19:47:29,751 - ERROR - Error in calculating risk!
+Traceback (most recent call last):
+  File "c:\Users\home\Documents\Intermediate_python\3week.py", line 11, in <module>
+    100 / 0
+    ~~~~^~~
+ZeroDivisionError: division by zero
