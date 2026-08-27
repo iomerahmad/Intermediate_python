@@ -1,15 +1,35 @@
-from pathlib import Path
+class TradeJournal:
+    def __init__(self, trades=[]):
+        self.trades = trades
+        self.starting_balance = 1000
 
-data_dir = Path("data")
-logs_dir = Path("logs")
+    def add_trade(self, symbol, pnl):
+        trade = {"symbol": symbol, "pnl": pnl}
+        self.trades.append(trade)
 
-data_dir.mkdir(exist_ok=True)
-logs_dir.mkdir(exist_ok=True)
+    def win_rate(self):
+        wins = 0
+        for trade in self.trades:
+            if trade["pnl"] > 0:
+                wins += 1
+        return wins / len(self.trades) * 100
 
-trades_file = Path("data") / "traders.csv"
-trades_file.touch(exist_ok=True)
+    def total_pnl(self):
+        total = 0
+        for trade in self.trades:
+            total = total + trade["pnl"]
+        return total
 
-if trades_file.exists():
-    print("File found")
-else:
-    print("File does not exist yet")
+    @classmethod
+    def from_dict(data):
+        journal = TradeJournal()
+        journal.trades = data["trades"]
+        return journal
+
+
+
+j1 = TradeJournal()
+j1.add_trade("BTC", 50)
+
+j2 = TradeJournal()
+print(j2.trades)

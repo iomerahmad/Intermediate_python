@@ -48,6 +48,7 @@ class Journal:
                 logger.debug("Saved %d trades to trades.json", len(self.trades))
         except OSError as e:
             logger.error("Could not save trades: %s", e)
+            return f"Save error - could not save trade(s)"
 
     def load(self):
         try:
@@ -86,36 +87,59 @@ class Journal:
         total_r = sum(trade.r_result for trade in self.trades)
         return total_r / len(self.trades)
 
-j = Journal()
-j.load()
-while True:
-    user_input = input(f"Input 1-5:\n1. Add trade\n2. View all trades\n3. View stats (win rate, expectancy)\n4. Save\n5. Exit\n")
-    try:
-        if int(user_input) == 1:
-            try: 
-                trade_direction = input("Direction: ")
-                trade_entry = input("Entry: ")
-                trade_entry_time = input("Entry time: ")
-                trade_result = int(input("Result (in R): "))
-                final = Trade(trade_direction, float(trade_entry), trade_entry_time, trade_result)
-                j.add_trade(final)
-            except ValueError:
-                logger.warning("trade credentials must be valid")
-        elif int(user_input) == 2:
-            j.print_all_trades()
-        elif int(user_input) == 3:
-            print(f"Win rate: {j.win_rate()}%")
-            print(f"EV: {j.expectancy()}")
-        elif int(user_input) == 4:
-            j.save()
-        elif int(user_input) == 5:
-            break
 
-    except ValueError:
-        logger.warning("Input must be between 1-5")
+class TradeLogFile:
+    def __init__(self, filepath: str):
+        self.filepath = filepath
+
+    def __enter__(self):
+        self.file = open(BASE_DIR / self.filepath, "a")
+        return self.file
+
+    def __exit__(self, exc_type, exc_value, exc_traceback):
+        self.file.close()
+        if exc_type is not None:
+            print(f"{exc_type}\n {exc_value}\n {exc_traceback}\n")
+        return False
 
 
-    
+def main():
+    j = Journal()
+    j.load()
+    while True:
+        choice = input(int(f"Input 1-5:\n1. Add trade\n2. View all trades\n3. View stats (win rate, expectancy)\n4. Save\n5. Exit\n"))
+        try:
+            if choice == 1:
+                try: 
+                    trade_direction = input("Direction: ")
+                    trade_entry = input("Entry: ")
+                    trade_entry_time = input("Entry time: ")
+                    trade_result = int(input("Result (in R): "))
+                    final = Trade(trade_direction, float(trade_entry), trade_entry_time, trade_result)
+                    j.add_trade(final)
+                except ValueError:
+                    logger.warning("trade credentials must be valid")
+            elif choice == 2:
+                j.print_all_trades()
+            elif choice == 3:
+                print(f"Win rate: {j.win_rate()}%")
+                print(f"EV: {j.expectancy()}")
+            elif choice == 4:
+                j.save()
+            elif choice == 5:
+                break
+
+        except ValueError:
+            logger.warning("Input must be between 1-5")
+
+
+
+if __name__ == "__main__":
+    with TradeLogFile("test.log") as f:
+        f.write("test line\n")
+        raise ValueError("simulated crash")
+
+    print("did this line run?")
 
 
 
