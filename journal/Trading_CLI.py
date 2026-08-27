@@ -132,14 +132,12 @@ def main():
         except ValueError:
             logger.warning("Input must be between 1-5")
 
-
-
 if __name__ == "__main__":
-    with TradeLogFile("test.log") as f:
-        f.write("test line\n")
-        raise ValueError("simulated crash")
+    main()
 
-    print("did this line run?")
+
+
+
 
 
 
