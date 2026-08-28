@@ -1,5 +1,7 @@
 import json
 import logging
+import csv
+import time
 from pathlib import Path
 
 BASE_DIR = Path(__file__).parent
@@ -102,12 +104,19 @@ class TradeLogFile:
             print(f"{exc_type}\n {exc_value}\n {exc_traceback}\n")
         return False
 
+def stream_trades(filepath: str):
+    with open(BASE_DIR / filepath, "r") as f:
+        trades = csv.DictReader(f)
+        for trade in trades:
+            yield trade
+    
 
 def main():
     j = Journal()
     j.load()
     while True:
-        choice = input(int(f"Input 1-5:\n1. Add trade\n2. View all trades\n3. View stats (win rate, expectancy)\n4. Save\n5. Exit\n"))
+        choice = input(f"Input 1-5:\n1. Add trade\n2. View all trades\n3. View stats (win rate, expectancy)\n4. Save\n5. Exit\n")
+        choice = int(choice)
         try:
             if choice == 1:
                 try: 
@@ -131,6 +140,11 @@ def main():
 
         except ValueError:
             logger.warning("Input must be between 1-5")
+
+    for i, trade in enumerate(stream_trades("trades.csv")):
+        print(trade)
+        if i >= 3:
+            break
 
 if __name__ == "__main__":
     main()
