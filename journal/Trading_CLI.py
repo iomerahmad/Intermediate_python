@@ -109,7 +109,39 @@ def stream_trades(filepath: str):
         trades = csv.DictReader(f)
         for trade in trades:
             yield trade
-    
+
+def timer(func):
+    def wrapper(*args, **kwargs):
+        start = time.time()
+        result = func(*args, **kwargs)
+        end = time.time()
+        total = end - start
+        print(f"{func.__name__}: {total: .4f}")
+        return result
+    return wrapper
+
+def retry(times: int):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            for attempt in range(times):
+                try:
+                    result = func(*args, **kwargs)
+                    return result  
+                except Exception as e:
+                    if attempt == int(times-1):
+                        print(f"Operation could not be done")
+                        raise 
+        return wrapper
+    return decorator
+
+@timer
+def add(a, b):
+    return a + b
+
+@retry(times=3)
+def always_fails():
+    raise ValueError("boom")
+
 
 def main():
     j = Journal()
@@ -141,10 +173,10 @@ def main():
         except ValueError:
             logger.warning("Input must be between 1-5")
 
-    for i, trade in enumerate(stream_trades("trades.csv")):
-        print(trade)
-        if i >= 3:
-            break
+    
+
+    print(always_fails())
+
 
 if __name__ == "__main__":
     main()
