@@ -2,6 +2,7 @@ import json
 import logging
 from pathlib import Path
 from dataclasses import dataclass
+import sqlite3
 
 BASE_DIR = Path(__file__).parent.parent
 
@@ -66,7 +67,23 @@ class Journal:
     def add_trade(self, trade: Trade) -> None:
         if not isinstance(trade, Trade):
             raise TypeError("add_trade expects a Trade object")
-        self.trades.append(trade)
+        connection = sqlite3.connect("trades.db")
+        cursor = connection.cursor()
+        cursor.execute("""
+            INSERT INTO trades(
+                direction,
+                entry_time, 
+                r_result)
+            VALUES
+                (?, ?, ?)
+        """, (
+            trade.direction,
+            trade.entry_time,
+            trade.r_result
+        ))
+
+        connection.commit()
+        connection.close()
 
     def print_all_trades(self) -> None:
         if not self.trades:
