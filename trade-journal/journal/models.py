@@ -37,11 +37,11 @@ class Journal:
         if not trades:
             return 0.0
         wins = sum(1 for trade in trades if trade.r_result > 0)
-        return wins / len(trades) * 100
+        return round(wins / len(trades) * 100, 2)
 
     def expectancy(self) -> float:
         trades = get_all_trades()
         if not trades:
             return 0.0
         total_r = sum(trade.r_result for trade in trades)
-        return total_r / len(trades)
+        return round(total_r / len(trades), 2)
