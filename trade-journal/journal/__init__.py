@@ -1,2 +1,2 @@
-# journal/__init__.py
-from journal.models import Journal, Trade
+from journal.models import Journal
+from journal.trade import Trade
