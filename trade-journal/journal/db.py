@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from urllib.parse import quote_plus
 
+
 load_dotenv()
 
 password = os.getenv("DB_PASSWORD")

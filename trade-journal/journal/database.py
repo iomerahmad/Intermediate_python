@@ -1,62 +1,34 @@
-import sqlite3
-from pathlib import Path
-from journal.trade import Trade 
+from journal.orm_models import TradeORM
+from journal.trade import Trade
+from journal.db import engine
+from sqlalchemy.orm import Session
 
 
 def main():
-    insert_table()
-
-def insert_table() -> None:
-    DB_PATH = Path(__file__).resolve().parent / "trades.db"
-    connection = sqlite3.connect(DB_PATH)
-    cursor = connection.cursor()
-    cursor.execute("""
-        CREATE TABLE trades (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            direction TEXT NOT NULL CHECK(direction IN ("long", "short")),
-            entry_time TEXT NOT NULL,
-            r_result REAL NOT NULL
-
-    )
-
-    """)
-    connection.commit()
-    connection.close()
+    pass
 
 def get_all_trades() -> list[Trade]:
-    DB_PATH = Path(__file__).resolve().parent / "trades.db"
-    connection = sqlite3.connect(DB_PATH)
-    cursor = connection.cursor()
-    cursor.execute("""
-        SELECT * FROM trades
-    """)
-    rows = cursor.fetchall()
-    connection.close()
-    trades = []
-    for row in rows:
-        trade = {"direction": row[1], "entry_time": row[2], "r_result": row[3]}
-        trades.append(Trade.from_dict(trade))
-    return trades
+    with Session(engine) as session:
+        trades_orm = session.query(TradeORM).all()
+        trades = []
+        for trade_orm in trades_orm:
+            trade = Trade(
+                direction = trade_orm.direction,
+                entry_time = trade_orm.entry_time,
+                r_result = trade_orm.r_result 
+            )
+            trades.append(trade)
+        return trades
 
 def add_trade(trade: Trade) -> None:
-    DB_PATH = Path(__file__).resolve().parent / "trades.db"
-    connection = sqlite3.connect(DB_PATH)
-    cursor = connection.cursor()
-    cursor.execute("""
-        INSERT INTO trades(
-            direction,
-            entry_time, 
-            r_result)
-        VALUES
-            (?, ?, ?)
-    """, (
-        trade.direction,
-        trade.entry_time,
-        trade.r_result
-    ))
-
-    connection.commit()
-    connection.close()
+    with Session(engine) as session:
+        new = TradeORM(
+            direction = trade.direction,
+            entry_time = trade.entry_time,
+            r_result = trade.r_result 
+        )
+        session.add(new)
+        session.commit()
         
 
 if __name__ == "__main__":
